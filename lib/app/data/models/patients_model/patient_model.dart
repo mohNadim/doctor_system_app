@@ -23,10 +23,10 @@ class Patient {
   String? address;
 
   @HiveField(6)
-  String companionName;
+  String? companionName;
 
   @HiveField(7)
-  String companionNationalId;
+  String? companionNationalId;
 
   @HiveField(8)
   String? companionMobile;
@@ -38,8 +38,8 @@ class Patient {
     this.mobileNumber,
     this.landlineNumber,
     this.address,
-    required this.companionName,
-    required this.companionNationalId,
+    this.companionName,
+    this.companionNationalId,
     this.companionMobile,
   });
 

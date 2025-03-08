@@ -23,8 +23,8 @@ class PatientAdapter extends TypeAdapter<Patient> {
       mobileNumber: fields[3] as String?,
       landlineNumber: fields[4] as String?,
       address: fields[5] as String?,
-      companionName: fields[6] as String,
-      companionNationalId: fields[7] as String,
+      companionName: fields[6] as String?,
+      companionNationalId: fields[7] as String?,
       companionMobile: fields[8] as String?,
     );
   }
