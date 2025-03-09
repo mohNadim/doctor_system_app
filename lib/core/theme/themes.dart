@@ -19,6 +19,7 @@ final theme = ThemeData(
     headlineSmall: GoogleFonts.tajawal(),
   ),
   inputDecorationTheme: InputDecorationTheme(
+    hintStyle: GoogleFonts.tajawal(color: Colors.black38, fontSize: 15),
     border: border,
     enabledBorder: border,
     focusedBorder: border,

@@ -57,8 +57,8 @@ class PatientController extends GetxController {
 
     patientBox = await Hive.openBox<Patient>('patients');
 
-    loadData();
     // deletData();
+    loadData();
   }
 
   @override
@@ -96,14 +96,21 @@ class PatientController extends GetxController {
 
     Patient patient = Patient(
       name: nameCtrl.text,
-      nationalId: nationalIdCtrl.text,
       birthDate: patientBirth!,
       address: addressCtrl.text,
-      companionMobile: companionMobileCtrl.text,
-      companionName: companionNameCtrl.text,
-      companionNationalId: companionNationalIdCtrl.text,
-      landlineNumber: landlineNumberCtrl.text,
       mobileNumber: mobileNumberCtrl.text,
+      nationalId: nationalIdCtrl.text,
+      companionMobile: companionMobileCtrl.text.trim().isEmpty
+          ? null
+          : companionMobileCtrl.text,
+      companionName:
+          companionNameCtrl.text.trim().isEmpty ? null : companionNameCtrl.text,
+      companionNationalId: companionNationalIdCtrl.text.trim().isEmpty
+          ? null
+          : companionNationalIdCtrl.text,
+      landlineNumber: landlineNumberCtrl.text.trim().isEmpty
+          ? null
+          : landlineNumberCtrl.text,
     );
 
     patientBox.put(patient.nationalId, patient);

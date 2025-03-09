@@ -19,7 +19,7 @@ class Field extends StatelessWidget {
   final String hintText;
   final String label;
   int? maxLine;
-  bool enabled ;
+  bool enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -45,16 +45,10 @@ class Field extends StatelessWidget {
               validator: validator,
               textAlign: TextAlign.right,
               maxLines: maxLine,
-              // decoration: InputDecoration(
-              //   hintText: hintText,
-              //   hintStyle:
-              //       GoogleFonts.tajawal(color: Colors.black38, fontSize: 15),
-              //   hintTextDirection: TextDirection.rtl,
-              //   focusedBorder: border,
-              //   enabledBorder: border,
-              //   errorBorder: border,
-              //   border: border,
-              // ),
+              decoration: InputDecoration(
+                hintText: hintText,
+                hintTextDirection: TextDirection.rtl,
+              ),
             ),
           ),
         ],

@@ -11,7 +11,7 @@ class DataColumnContent extends StatelessWidget {
     return Text(
       txt,
       textDirection: TextDirection.rtl,
-      textAlign: TextAlign.start,
+      textAlign: TextAlign.center,
       style: GoogleFonts.tajawal(
         fontWeight: FontWeight.bold,
         color: Colors.deepPurple,

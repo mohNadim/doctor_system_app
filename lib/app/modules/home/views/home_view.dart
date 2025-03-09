@@ -14,16 +14,16 @@ class HomeView extends GetView<HomeController> {
           children: [
             // قائمة التنقل الجانبية
             NavigationRail(
-              backgroundColor: const Color(0xFF7C4DFF),
+              backgroundColor: const Color(0xFFECE6F0),
               minWidth: 100,
               destinations: const [
                 NavigationRailDestination(
-                  icon: Icon(Icons.add),
-                  label: Text("add"),
-                ),
-                NavigationRailDestination(
                   icon: Icon(Icons.home),
                   label: Text("home"),
+                ),
+                NavigationRailDestination(
+                  icon: Icon(Icons.add),
+                  label: Text("add"),
                 ),
                 NavigationRailDestination(
                   icon: Icon(Icons.favorite),
