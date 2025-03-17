@@ -1,7 +1,9 @@
 import 'package:doctor_sys_app/app/data/models/patients_model/patient_model.dart';
-import 'package:doctor_sys_app/app/modules/patient/views/widget/button.dart';
+import 'package:doctor_sys_app/app/modules/patient/views/add_patient_view.dart';
+import 'package:doctor_sys_app/core/widgets/button.dart';
 import 'package:doctor_sys_app/app/modules/patient/views/widget/data_column_content.dart';
 import 'package:doctor_sys_app/app/modules/patient/views/widget/search_widget.dart';
+import 'package:doctor_sys_app/app/modules/visit/views/visit_view.dart';
 import 'package:doctor_sys_app/app/routes/app_pages.dart';
 import 'package:doctor_sys_app/core/constant/constant_var.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +33,12 @@ class PatientView extends GetView<PatientController> {
                   SearchWidget(controller: controller),
                   MyButtun(
                     txt: "إضافة مريض",
-                    onPressed: () => Get.toNamed(Routes.ADD_PATIENT),
+                    onPressed: () => Get.dialog(
+                      Dialog(
+                        child: AddPatientView(),
+                      ),
+                    ),
+                    // Get.toNamed(Routes.ADD_PATIENT),
                   )
                 ],
               ),
@@ -44,8 +51,9 @@ class PatientView extends GetView<PatientController> {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 0),
                           child: DataTable(
+                            sortColumnIndex: 8,
+                            sortAscending: controller.sortAscending.value,
                             showCheckboxColumn: true,
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
                             border: TableBorder.all(
                               borderRadius: BorderRadius.circular(5),
                               color: Colors.black26,
@@ -101,6 +109,7 @@ class PatientView extends GetView<PatientController> {
                                 ),
                               ),
                               DataColumn(
+                                onSort: controller.sortPatientsByName,
                                 headingRowAlignment: MainAxisAlignment.center,
                                 label: DataColumnContent(
                                   txt: "الاسم",
@@ -110,8 +119,13 @@ class PatientView extends GetView<PatientController> {
                             rows: List.generate(
                               controller.filteredPatients.length,
                               (index) {
-                                Patient p = controller.filteredPatients[index];
+                                Patient p =
+                                    controller.searchQuery.trim().isEmpty
+                                        ? controller.patients[index]
+                                        : controller.filteredPatients[index];
                                 return DataRow(
+                                  onLongPress: () =>
+                                      Get.toNamed(Routes.VISIT, arguments: p),
                                   cells: [
                                     DataCell(
                                       Text(
@@ -121,6 +135,7 @@ class PatientView extends GetView<PatientController> {
                                             : null,
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.right,
+                                        textDirection: TextDirection.rtl,
                                       ),
                                       placeholder:
                                           p.companionNationalId == null,
@@ -132,6 +147,7 @@ class PatientView extends GetView<PatientController> {
                                             ? emptyFieldStyle
                                             : null,
                                         textAlign: TextAlign.right,
+                                        textDirection: TextDirection.rtl,
                                       ),
                                       placeholder: p.companionMobile == null,
                                     ),
@@ -142,6 +158,7 @@ class PatientView extends GetView<PatientController> {
                                             ? emptyFieldStyle
                                             : null,
                                         textAlign: TextAlign.right,
+                                        textDirection: TextDirection.rtl,
                                       ),
                                       placeholder: p.companionName == null,
                                     ),
@@ -152,6 +169,7 @@ class PatientView extends GetView<PatientController> {
                                             ? emptyFieldStyle
                                             : null,
                                         textAlign: TextAlign.right,
+                                        textDirection: TextDirection.rtl,
                                       ),
                                       placeholder: p.landlineNumber == null,
                                     ),
@@ -165,6 +183,7 @@ class PatientView extends GetView<PatientController> {
                                               : null,
                                           overflow: TextOverflow.fade,
                                           textAlign: TextAlign.right,
+                                          textDirection: TextDirection.rtl,
                                         ),
                                       ),
                                       placeholder: p.address == null,
@@ -176,6 +195,7 @@ class PatientView extends GetView<PatientController> {
                                             ? emptyFieldStyle
                                             : null,
                                         textAlign: TextAlign.right,
+                                        textDirection: TextDirection.rtl,
                                       ),
                                       placeholder: p.mobileNumber == null,
                                     ),
@@ -183,12 +203,14 @@ class PatientView extends GetView<PatientController> {
                                       Text(
                                         p.nationalId,
                                         textAlign: TextAlign.right,
+                                        textDirection: TextDirection.rtl,
                                       ),
                                     ),
                                     DataCell(
                                       Text(
                                         p.age.toString(),
                                         textAlign: TextAlign.right,
+                                        textDirection: TextDirection.rtl,
                                       ),
                                     ),
                                     DataCell(

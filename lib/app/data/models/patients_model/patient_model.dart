@@ -44,4 +44,9 @@ class Patient {
   });
 
   int get age => DateTime.now().year - birthDate.year;
+
+  @override
+  String toString() {
+    return "Patient(name: $name)";
+  }
 }

@@ -1,4 +1,3 @@
-
 import 'package:doctor_sys_app/app/modules/patient/controllers/patient_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,7 +24,7 @@ class SearchWidget extends StatelessWidget {
         ),
       ),
       leading: Icon(Icons.search),
-      hintText: "Search",
+      hintText: "بحث",
       hintStyle: WidgetStateProperty.all(
         GoogleFonts.tajawal(
           color: Colors.black38,

@@ -32,6 +32,8 @@ class PatientController extends GetxController {
 
   RxString searchQuery = ''.obs;
 
+  RxBool sortAscending = true.obs;
+
   List<Patient> get filteredPatients {
     return patients
         .where(
@@ -73,6 +75,7 @@ class PatientController extends GetxController {
     mobileNumberCtrl.dispose();
     nationalIdCtrl.dispose();
     dateCtrl.dispose();
+
   }
 
   void deletData() {
@@ -138,5 +141,15 @@ class PatientController extends GetxController {
 
   void loadData() {
     patients.assignAll(patientBox.values.toList());
+  }
+
+  void sortPatientsByName(int columnIndex, bool ascending) {
+    sortAscending.value = !sortAscending.value;
+
+    patients.sort(
+      (a, b) => ascending ? a.name.compareTo(b.name) : b.name.compareTo(a.name),
+    );
+
+    update();
   }
 }

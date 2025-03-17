@@ -6,6 +6,7 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const PATIENT = _Paths.PATIENT;
   static const ADD_PATIENT = _Paths.ADD_PATIENT;
+  static const VISIT = _Paths.VISIT;
 }
 
 abstract class _Paths {
@@ -13,4 +14,5 @@ abstract class _Paths {
   static const HOME = '/home';
   static const PATIENT = '/patient';
   static const ADD_PATIENT = '/add_patient';
+  static const VISIT = '/visit';
 }

@@ -1,24 +1,16 @@
-import 'package:doctor_sys_app/app/modules/patient/controllers/patient_controller.dart';
+import 'package:doctor_sys_app/app/modules/visit/controllers/visit_controller.dart';
 import 'package:doctor_sys_app/core/widgets/button.dart';
 import 'package:doctor_sys_app/app/modules/patient/views/widget/textField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
-class AddPatientView extends GetView<PatientController> {
-  AddPatientView({super.key});
-  final border = OutlineInputBorder(
-    borderRadius: BorderRadius.circular(12),
-    borderSide: const BorderSide(color: Colors.black38),
-  );
+class EditPatientView extends GetView<VisitController> {
+  const EditPatientView({super.key});
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: controller.formKey,
+      // key: controller.formKey,
       child: Container(
         height: 500,
         width: 700,
@@ -49,7 +41,7 @@ class AddPatientView extends GetView<PatientController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          ": أضف مريضاً",
+                          ": عدّل معلومات المريض",
                           style: TextStyle(fontSize: 25),
                         ),
                       ],
@@ -103,8 +95,8 @@ class AddPatientView extends GetView<PatientController> {
                           ),
                         );
 
-                        controller.dateCtrl.text = DateFormat('dd/MM/yyyy')
-                            .format(controller.patientBirth ?? DateTime.now());
+                        // controller.dateCtrl.text = DateFormat('dd/MM/yyyy')
+                        //     .format(controller.patientBirth ?? DateTime.now());
                       },
                       child: Field(
                         required: true,
@@ -157,8 +149,10 @@ class AddPatientView extends GetView<PatientController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         MyButtun(
-                          onPressed: () => controller.addPatient(),
-                          txt: "إضافة",
+                          onPressed: () {
+                            controller.editPatient();
+                          },
+                          txt: "تعديل",
                         ),
                       ],
                     ),
@@ -171,13 +165,6 @@ class AddPatientView extends GetView<PatientController> {
       ),
     );
 
-    // Scaffold(
-    //   backgroundColor: Colors.deepPurpleAccent,
-    //   appBar: AppBar(
-    //     backgroundColor: Colors.deepPurpleAccent,
-    //     centerTitle: true,
-    //   ),
-    //   body:
-    // );
+ 
   }
 }

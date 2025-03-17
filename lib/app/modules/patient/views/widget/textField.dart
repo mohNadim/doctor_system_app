@@ -11,15 +11,16 @@ class Field extends StatelessWidget {
     this.validator,
     this.maxLine,
     this.enabled = true,
+    this.required = false,
   });
 
   TextEditingController? controller;
   String? Function(String?)? validator;
-  // final OutlineInputBorder border;
   final String hintText;
   final String label;
   int? maxLine;
   bool enabled;
+  bool required;
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +30,23 @@ class Field extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(right: 8),
-            child: Text(
-              label,
-              style: GoogleFonts.tajawal(fontSize: 16, color: Colors.black87),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                required
+                    ? Text(
+                        "*  ",
+                        style: GoogleFonts.tajawal(
+                          color: Colors.red,
+                        ),
+                      )
+                    : Text(''),
+                Text(
+                  label,
+                  style:
+                      GoogleFonts.tajawal(fontSize: 16, color: Colors.black87),
+                ),
+              ],
             ),
           ),
           SizedBox(

@@ -27,7 +27,7 @@ class MyButtun extends StatelessWidget {
       ),
       onPressed: onPressed,
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 12),
+        padding: EdgeInsets.symmetric(vertical: 10),
         child: Text(
           txt,
           style: GoogleFonts.tajawal(

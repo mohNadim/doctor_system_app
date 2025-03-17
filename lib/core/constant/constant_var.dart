@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 const String emptyValue = "فارغ";
 
-const TextStyle emptyFieldStyle = TextStyle(
-  color: const Color.fromARGB(255, 202, 27, 27),
-
-);
+final TextStyle emptyFieldStyle = GoogleFonts.tajawal(
+    color: Color(0xFFCA1B1B), fontSize: 15, fontWeight: FontWeight.bold);

@@ -12,14 +12,16 @@ class HomeView extends GetView<HomeController> {
       body: Obx(
         () => Row(
           children: [
-            // قائمة التنقل الجانبية
             NavigationRail(
               backgroundColor: const Color(0xFFECE6F0),
               minWidth: 100,
               destinations: const [
                 NavigationRailDestination(
-                  icon: Icon(Icons.home),
-                  label: Text("home"),
+                  icon: Icon(
+                    Icons.home,
+                    color: Colors.deepPurpleAccent,
+                  ),
+                  label: Text("الرئيسية"),
                 ),
                 NavigationRailDestination(
                   icon: Icon(Icons.add),
@@ -35,7 +37,6 @@ class HomeView extends GetView<HomeController> {
                   controller.selectIndex.value = value,
             ),
 
-            // المحتوى الرئيسي
             PatientView(),
           ],
         ),
